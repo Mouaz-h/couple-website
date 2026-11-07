@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, Sparkles, Settings, Menu, X } from 'lucide-react';
+import { Heart, Menu, X } from 'lucide-react';
 
-export default function Navbar({ partner1, partner2, onOpenCustomize }) {
+export default function Navbar({ partner1, partner2 }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -36,17 +36,6 @@ export default function Navbar({ partner1, partner2, onOpenCustomize }) {
           <a href="#memories" className="hover:text-romantic-softPink transition-colors">Memories</a>
           <a href="#letters" className="hover:text-romantic-softPink transition-colors">Love Notes</a>
           <a href="#bucketlist" className="hover:text-romantic-softPink transition-colors">Bucket List</a>
-        </div>
-
-        {/* Action Button */}
-        <div className="hidden md:flex items-center gap-4">
-          <button
-            onClick={onOpenCustomize}
-            className="flex items-center gap-2 px-4 py-2 rounded-full glass border border-romantic-pink/30 hover:border-romantic-pink text-xs uppercase tracking-wider text-white transition-all hover:bg-romantic-pink/10 shadow-lg shadow-romantic-pink/5"
-          >
-            <Settings className="w-3.5 h-3.5 text-romantic-pink animate-spin-slow" />
-            <span>Customize Site</span>
-          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -89,16 +78,6 @@ export default function Navbar({ partner1, partner2, onOpenCustomize }) {
           >
             Bucket List
           </a>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenCustomize();
-            }}
-            className="mt-2 w-full py-3 rounded-full bg-romantic-pink text-white text-xs uppercase tracking-wider font-medium flex items-center justify-center gap-2 shadow-lg shadow-romantic-pink/20"
-          >
-            <Settings className="w-4 h-4" />
-            <span>Customize Site</span>
-          </button>
         </div>
       )}
     </nav>

@@ -1,28 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import MusicPlayer from './components/MusicPlayer';
 import { DEFAULT_COUPLE_DATA } from './data/initialData';
-import { Heart, Calendar, MapPin, Sparkles, Image as ImageIcon, BookOpen, CheckSquare, Plus, Edit3, X, Check } from 'lucide-react';
+import { Heart, Calendar, MapPin, Sparkles, Image as ImageIcon, BookOpen, CheckSquare, Plus, X, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function App() {
-  const [coupleData, setCoupleData] = useState(() => {
-    const saved = localStorage.getItem('couple_website_data');
-    return saved ? JSON.parse(saved) : DEFAULT_COUPLE_DATA;
-  });
-
-  const [currentTrack, setCurrentTrack] = useState(coupleData.musicTrack || DEFAULT_COUPLE_DATA.musicTrack);
+  const [coupleData] = useState(DEFAULT_COUPLE_DATA);
+  const [currentTrack, setCurrentTrack] = useState(DEFAULT_COUPLE_DATA.musicTrack);
   const [lightboxPhoto, setLightboxPhoto] = useState(null);
-  const [isCustomizeOpen, setIsCustomizeOpen] = useState(false);
-  const [bucketList, setBucketList] = useState(coupleData.bucketList);
+  const [bucketList, setBucketList] = useState(DEFAULT_COUPLE_DATA.bucketList);
   const [newBucketItem, setNewBucketItem] = useState('');
   const [activeTab, setActiveTab] = useState('All');
-
-  // Save to localStorage when updated
-  useEffect(() => {
-    localStorage.setItem('couple_website_data', JSON.stringify({ ...coupleData, bucketList }));
-  }, [coupleData, bucketList]);
 
   const triggerHeartConfetti = () => {
     confetti({
@@ -55,7 +45,6 @@ export default function App() {
       <Navbar
         partner1={coupleData.partner1}
         partner2={coupleData.partner2}
-        onOpenCustomize={() => setIsCustomizeOpen(true)}
       />
 
       <main className="overflow-hidden">
@@ -312,128 +301,12 @@ export default function App() {
         </div>
       )}
 
-      {/* Customize Modal */}
-      {isCustomizeOpen && (
-        <CustomizeModal
-          data={coupleData}
-          onClose={() => setIsCustomizeOpen(false)}
-          onSave={(newData) => {
-            setCoupleData(newData);
-            setIsCustomizeOpen(false);
-          }}
-        />
-      )}
-
       {/* Music Player */}
       <MusicPlayer
         currentTrack={currentTrack}
         songPresets={coupleData.songPresets}
         onTrackChange={setCurrentTrack}
       />
-    </div>
-  );
-}
-
-// Customize Modal Component
-function CustomizeModal({ data, onClose, onSave }) {
-  const [formData, setFormData] = useState({ ...data });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSave(formData);
-  };
-
-  return (
-    <div className="fixed inset-0 z-50 bg-dark-950/90 backdrop-blur-xl flex items-center justify-center p-6 overflow-y-auto">
-      <div className="relative max-w-xl w-full glass-card p-8 rounded-3xl border border-romantic-pink/40 max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
-          <h3 className="font-serif text-2xl text-white flex items-center gap-2">
-            <Edit3 className="w-5 h-5 text-romantic-pink" /> Customize Your Website
-          </h3>
-          <button onClick={onClose} className="p-2 text-roseGold hover:text-white">
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs uppercase tracking-wider text-roseGold/70 mb-2">Partner 1 Name</label>
-              <input
-                type="text"
-                name="partner1"
-                value={formData.partner1}
-                onChange={handleChange}
-                className="w-full bg-dark-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-romantic-pink"
-              />
-            </div>
-            <div>
-              <label className="block text-xs uppercase tracking-wider text-roseGold/70 mb-2">Partner 2 Name</label>
-              <input
-                type="text"
-                name="partner2"
-                value={formData.partner2}
-                onChange={handleChange}
-                className="w-full bg-dark-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-romantic-pink"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-xs uppercase tracking-wider text-roseGold/70 mb-2">Anniversary / Together Since Date</label>
-            <input
-              type="datetime-local"
-              name="anniversaryDate"
-              value={formData.anniversaryDate.slice(0, 16)}
-              onChange={handleChange}
-              className="w-full bg-dark-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-romantic-pink"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs uppercase tracking-wider text-roseGold/70 mb-2">Tagline Quote</label>
-            <input
-              type="text"
-              name="tagline"
-              value={formData.tagline}
-              onChange={handleChange}
-              className="w-full bg-dark-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-romantic-pink"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs uppercase tracking-wider text-roseGold/70 mb-2">Love Letter Content</label>
-            <textarea
-              name="loveLetter"
-              rows={6}
-              value={formData.loveLetter}
-              onChange={handleChange}
-              className="w-full bg-dark-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-romantic-pink"
-            />
-          </div>
-
-          <div className="flex justify-end gap-3 pt-4 border-t border-white/10">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-6 py-2.5 rounded-xl glass text-xs uppercase tracking-wider text-white hover:bg-white/5"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="px-6 py-2.5 rounded-xl bg-romantic-pink text-xs uppercase tracking-wider text-white font-semibold shadow-lg shadow-romantic-pink/30 hover:bg-romantic-softPink"
-            >
-              Save Changes
-            </button>
-          </div>
-        </form>
-      </div>
     </div>
   );
 }

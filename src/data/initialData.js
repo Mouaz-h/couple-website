@@ -1,7 +1,30 @@
+/*
+  ============================================================================
+  ❤️ COUPLE WEBSITE CONFIGURATION & CONTENT INSTRUCTIONS ❤️
+  ============================================================================
+
+  1. HOW TO CHANGE TEXT:
+     - Change 'partner1' and 'partner2' below to your names.
+     - Change 'anniversaryDate' to your special date and time (format: "YYYY-MM-DDTHH:mm:ss").
+     - Change 'tagline' or update the 'loveLetter' string to write your own message.
+     - Update the 'reasonsToLove' array or 'bucketList' items with your personal thoughts.
+
+  2. HOW TO CHANGE PHOTOS:
+     - Find the 'milestones' and 'photos' arrays below.
+     - Each item has an 'image' or 'url' property containing a web image link.
+     - To use your own photos, you can upload them to free image hosts (like Imgur) or place image files in the 'src/assets/' folder and import them here.
+
+  3. HOW TO CHANGE MUSIC:
+     - Find the 'musicTrack' and 'songPresets' objects below.
+     - Replace the 'url' with a direct link to an MP3 file (e.g., hosted on a music hosting service or direct audio link).
+     - Replace 'cover' with an image link for the vinyl record cover art.
+  ============================================================================
+*/
+
 export const DEFAULT_COUPLE_DATA = {
-  partner1: "Julian",
-  partner2: "Elena",
-  anniversaryDate: "2021-10-14T18:30:00",
+  partner1: "Mouaz",
+  partner2: "Nahed",
+  anniversaryDate: "2026-09-08T23:23:00",
   tagline: "Two souls, one heartbeat, an infinite journey of love.",
   loveStoryTitle: "Our Forever Story",
   heroSubtitle: "Every love story is beautiful, but ours is my absolute favorite.",
@@ -40,37 +63,37 @@ export const DEFAULT_COUPLE_DATA = {
   milestones: [
     {
       id: 1,
-      date: "October 14, 2021",
-      title: "The First Glance",
-      location: "The Coffee House Downtown",
-      description: "Our eyes met over warm coffee and autumn rain. What started as a 15-minute chat turned into four hours of non-stop laughter and spark.",
+      date: "September 8, 2026",
+      title: "Our Special Beginning",
+      location: "Where Our Hearts Met",
+      description: "The moment everything changed and our paths became forever intertwined in the most beautiful way.",
       image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop",
       category: "First Met"
     },
     {
       id: 2,
-      date: "December 31, 2021",
-      title: "Midnight Kiss & Promises",
-      location: "Skyline Overlook",
-      description: "As fireworks painted the midnight sky pink and gold, we whispered our first 'I love you' under a canopy of stars.",
+      date: "December 31, 2026",
+      title: "Midnight Promise",
+      location: "Under the Stars",
+      description: "As the year turned, we whispered our first dreams of a shared lifetime together.",
       image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop",
       category: "Milestone"
     },
     {
       id: 3,
-      date: "Summer 2022",
-      title: "First Seaside Escape",
+      date: "Future Dream",
+      title: "Our Seaside Escape",
       location: "Amalfi Coast, Italy",
-      description: "Sun-kissed sunsets, endless ocean breezes, and sharing gelato while wandering through warm narrow stone alleys together.",
+      description: "Sun-kissed sunsets, endless ocean breezes, and walking hand in hand along warm stone alleys.",
       image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
       category: "Travel"
     },
     {
       id: 4,
-      date: "November 19, 2023",
-      title: "Moving In Together",
-      location: "Our Little Haven",
-      description: "Unpacking endless cardboard boxes, arguing playfully over furniture placement, and turning a simple apartment into our cozy home.",
+      date: "Our Haven",
+      title: "Building Our Home",
+      location: "Our Cozy Sanctuary",
+      description: "Creating a warm space filled with laughter, shared coffee mornings, and endless love.",
       image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop",
       category: "Home"
     },
@@ -79,7 +102,7 @@ export const DEFAULT_COUPLE_DATA = {
       date: "Today & Forever",
       title: "Writing Our Next Chapter",
       location: "Everywhere With You",
-      description: "Hand in hand, stepping into tomorrow with even deeper passion, patience, joy, and endless romantic adventures ahead.",
+      description: "Hand in hand, stepping into tomorrow with even deeper passion, patience, and joy.",
       image: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=800&auto=format&fit=crop",
       category: "Future"
     }
@@ -90,7 +113,7 @@ export const DEFAULT_COUPLE_DATA = {
     {
       id: 1,
       title: "Golden Hour Embrace",
-      date: "Autumn 2023",
+      date: "September 2026",
       caption: "You are my golden hour in every sunset.",
       url: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800&auto=format&fit=crop",
       tag: "Romantic"
@@ -98,15 +121,15 @@ export const DEFAULT_COUPLE_DATA = {
     {
       id: 2,
       title: "Starry Night Stroll",
-      date: "Winter 2022",
+      date: "Moonlit Evening",
       caption: "Cold hands, warm hearts, infinite stars above.",
       url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
       tag: "Dates"
     },
     {
       id: 3,
-      title: "Laughing Out Loud",
-      date: "Spring 2023",
+      title: "Pure Joy",
+      date: "Recent",
       caption: "Your smile is my favorite view in the entire world.",
       url: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop",
       tag: "Joy"
@@ -114,7 +137,7 @@ export const DEFAULT_COUPLE_DATA = {
     {
       id: 4,
       title: "Sunset Serenade",
-      date: "Summer 2023",
+      date: "Summer",
       caption: "Lost in the rhythm of your laughter.",
       url: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=800&auto=format&fit=crop",
       tag: "Travel"
@@ -122,7 +145,7 @@ export const DEFAULT_COUPLE_DATA = {
     {
       id: 5,
       title: "Cozy Sunday Morning",
-      date: "Recent",
+      date: "Everyday",
       caption: "Lazy mornings, warm tea, and endless cuddles.",
       url: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop",
       tag: "Everyday"
@@ -130,7 +153,7 @@ export const DEFAULT_COUPLE_DATA = {
     {
       id: 6,
       title: "Candlelight Night",
-      date: "Anniversary Night",
+      date: "Special Date",
       caption: "To a million more candlelit memories with you.",
       url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop",
       tag: "Romantic"
@@ -147,12 +170,12 @@ export const DEFAULT_COUPLE_DATA = {
     {
       id: 2,
       title: "Your Infectious Smile",
-      text: "No matter how dark the day is, one flash of your dimples lights up my entire world."
+      text: "No matter how dark the day is, one flash of your smile lights up my entire world."
     },
     {
       id: 3,
-      title: "Our Inside Jokes",
-      text: "That silent look we give each other across a crowded room where we both burst into tears of laughter."
+      title: "Our Special Connection",
+      text: "That silent look we give each other across a crowded room where we both burst into joy."
     },
     {
       id: 4,
@@ -172,7 +195,7 @@ export const DEFAULT_COUPLE_DATA = {
   ],
 
   // Love Notes
-  loveLetter: `My Dearest Love,
+  loveLetter: `My Dearest Nahed,
 
 From the moment you entered my life, everything turned a little brighter, warmer, and infinitely more meaningful.
 
@@ -181,7 +204,7 @@ Thank you for being my anchor when storms arise, my favorite conversation at mid
 I promise to love you fiercely through every season, to dance with you in the rain, to celebrate all your victories, and to hold your hand through whatever comes our way.
 
 Forever & always yours,
-With all my heart.`,
+Mouaz`,
 
   // Shared Bucket List
   bucketList: [
