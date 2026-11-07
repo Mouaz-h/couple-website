@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #080307;
+    color: #f7d6e0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive !important;
+}
+
+.font-serif {
+  font-family: 'Cormorant Garamond', serif !important;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+/* Glassmorphism & Romantic Glow Effects */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(25, 10, 20, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 42, 133, 0.15);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(255, 42, 133, 0.1);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 42, 133, 0.4);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 42, 133, 0.2);
+}
+
+.text-gradient-romantic {
+  background: linear-gradient(135deg, #ffffff 0%, #f7d6e0 40%, #ff75b3 80%, #ff2a85 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-glow-pink {
+  text-shadow: 0 0 15px rgba(255, 42, 133, 0.6);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080307;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b1122;
+  border-radius: 9999px;
+  border: 2px solid #080307;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff2a85;
+}
+
+/* Music Equalizer Bar */
+@keyframes music-bar {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+.music-bar {
+  display: inline-block;
+  width: 3px;
+  background-color: #ff2a85;
+  margin: 0 1px;
+  animation: music-bar 1s ease-in-out infinite;
+}
+
+.music-bar:nth-child(2) { animation-delay: 0.2s; }
+.music-bar:nth-child(3) { animation-delay: 0.4s; }
+.music-bar:nth-child(4) { animation-delay: 0.6s; }
