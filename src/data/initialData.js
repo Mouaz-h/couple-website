@@ -13,7 +13,7 @@
      - The photos are in the 'public/photos/' directory and renamed to photo1.jpeg, photo2.jpeg, etc.
      - Find the 'milestones' and 'photos' arrays below.
      - Replace the existing 'image' or 'url' fields with './photos/photo1.jpeg', './photos/photo2.jpeg', etc.
-     - IMPORTANT: Use './photos/...' (with the dot) to ensure they load correctly on all servers.
+     - IMPORTANT: Use './photos/...' (with the dot) to ensure they load correctly.
 
   3. HOW TO CHANGE MUSIC:
      - Find the 'musicTrack' and 'songPresets' objects below.
@@ -26,9 +26,9 @@ export const DEFAULT_COUPLE_DATA = {
   partner1: "Mouaz",
   partner2: "Nahed",
   anniversaryDate: "2026-09-08T23:23:00",
-  tagline: "Two souls, one heartbeat, an infinite journey of love.",
-  loveStoryTitle: "Our Forever Story",
-  heroSubtitle: "Every love story is beautiful, but ours is my absolute favorite.",
+  tagline: "Our love is the beautiful story we write every day, together.",
+  loveStoryTitle: "Our Beautiful Journey",
+  heroSubtitle: "Every moment with you is my absolute favorite.",
 
   // Romantic Audio tracks
   musicTrack: {
@@ -66,35 +66,35 @@ export const DEFAULT_COUPLE_DATA = {
       id: 1,
       date: "September 8, 2026",
       title: "Our Special Beginning",
-      location: "Where Our Hearts Met",
-      description: "The moment everything changed and our paths became forever intertwined in the most beautiful way.",
+      location: "Where We Met",
+      description: "Our paths crossed, and life became infinitely more beautiful from that moment on.",
       image: "./photos/photo1.jpeg",
       category: "First Met"
     },
     {
       id: 2,
-      date: "December 31, 2026",
-      title: "Midnight Promise",
-      location: "Under the Stars",
-      description: "As the year turned, we whispered our first dreams of a shared lifetime together.",
+      date: "Recent Date",
+      title: "Growing Together",
+      location: "In Each Other's Arms",
+      description: "Cherishing every laugh, every shared dream, and the beautiful bond we continue to build.",
       image: "./photos/photo2.jpeg",
       category: "Milestone"
     },
     {
       id: 3,
-      date: "Future Dream",
-      title: "Our Seaside Escape",
-      location: "Amalfi Coast, Italy",
-      description: "Sun-kissed sunsets, endless ocean breezes, and walking hand in hand along warm stone alleys.",
+      date: "An Adventure",
+      title: "Creating Memories",
+      location: "Together, Anywhere",
+      description: "Exploring life side by side, finding joy in the simple moments and big adventures alike.",
       image: "./photos/photo3.jpeg",
       category: "Travel"
     },
     {
       id: 4,
-      date: "Our Haven",
-      title: "Building Our Home",
-      location: "Our Cozy Sanctuary",
-      description: "Creating a warm space filled with laughter, shared coffee mornings, and endless love.",
+      date: "Everyday",
+      title: "Our Daily Joy",
+      location: "Home Sweet Home",
+      description: "Turning every day into something special just by being us.",
       image: "./photos/photo4.jpeg",
       category: "Home"
     },
@@ -102,8 +102,8 @@ export const DEFAULT_COUPLE_DATA = {
       id: 5,
       date: "Today & Forever",
       title: "Writing Our Next Chapter",
-      location: "Everywhere With You",
-      description: "Hand in hand, stepping into tomorrow with even deeper passion, patience, and joy.",
+      location: "By Your Side",
+      description: "Hand in hand, stepping into tomorrow with endless passion, patience, and love.",
       image: "./photos/photo5.jpeg",
       category: "Future"
     }
@@ -113,49 +113,49 @@ export const DEFAULT_COUPLE_DATA = {
   photos: [
     {
       id: 1,
-      title: "Golden Hour Embrace",
-      date: "September 2026",
-      caption: "You are my golden hour in every sunset.",
+      title: "Beautiful Moments",
+      date: "Recently",
+      caption: "Capturing the joy of being together.",
       url: "./photos/photo6.jpeg",
       tag: "Romantic"
     },
     {
       id: 2,
-      title: "Starry Night Stroll",
-      date: "Moonlit Evening",
-      caption: "Cold hands, warm hearts, infinite stars above.",
+      title: "Side by Side",
+      date: "Recently",
+      caption: "No matter where we are, it's perfect with you.",
       url: "./photos/photo7.jpeg",
       tag: "Dates"
     },
     {
       id: 3,
       title: "Pure Joy",
-      date: "Recent",
-      caption: "Your smile is my favorite view in the entire world.",
+      date: "Recently",
+      caption: "Your laughter is my favorite song.",
       url: "./photos/photo8.jpeg",
       tag: "Joy"
     },
     {
       id: 4,
-      title: "Sunset Serenade",
-      date: "Summer",
-      caption: "Lost in the rhythm of your laughter.",
+      title: "Adventure Awaits",
+      date: "Recently",
+      caption: "Exploring the world, one smile at a time.",
       url: "./photos/photo9.jpeg",
       tag: "Travel"
     },
     {
       id: 5,
-      title: "Cozy Sunday Morning",
+      title: "Everyday Magic",
       date: "Everyday",
-      caption: "Lazy mornings, warm tea, and endless cuddles.",
+      caption: "Making magic out of ordinary moments.",
       url: "./photos/photo10.jpeg",
       tag: "Everyday"
     },
     {
       id: 6,
-      title: "Candlelight Night",
-      date: "Special Date",
-      caption: "To a million more candlelit memories with you.",
+      title: "Special Moments",
+      date: "Special",
+      caption: "Treasuring these moments with you.",
       url: "./photos/photo11.jpeg",
       tag: "Romantic"
     }
@@ -200,11 +200,11 @@ export const DEFAULT_COUPLE_DATA = {
 
 From the moment you entered my life, everything turned a little brighter, warmer, and infinitely more meaningful.
 
-Thank you for being my anchor when storms arise, my favorite conversation at midnight, and my peaceful sanctuary at the end of every day. Every song reminds me of your smile, and every sunset pales in comparison to the light in your eyes.
+Thank you for being my anchor when storms arise, my favorite conversation at midnight, and my peaceful sanctuary at the end of every day.
 
-I promise to love you fiercely through every season, to dance with you in the rain, to celebrate all your victories, and to hold your hand through whatever comes our way.
+I promise to love you fiercely through every season, to celebrate all your victories, and to hold your hand through whatever comes our way.
 
-Forever & always yours,
+Yours forever,
 Mouaz`,
 
   // Shared Bucket List
