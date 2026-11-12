@@ -26,7 +26,7 @@ export const DEFAULT_COUPLE_DATA = {
   partner1: "Mouaz",
   partner2: "Nahed",
   anniversaryDate: "2026-09-08T23:23:00",
-  tagline: "Our love is the beautiful story we write every day, together.",
+  tagline: "Two hearts beating as one, exploring the world together.",
   loveStoryTitle: "Our Beautiful Journey",
   heroSubtitle: "Every moment with you is my absolute favorite.",
 
@@ -65,27 +65,27 @@ export const DEFAULT_COUPLE_DATA = {
     {
       id: 1,
       date: "September 8, 2026",
-      title: "Our Special Beginning",
-      location: "Where We Met",
-      description: "Our paths crossed, and life became infinitely more beautiful from that moment on.",
+      title: "The Beginning of Us",
+      location: "Where Our Hearts Met",
+      description: "A simple glance turned into a journey that has completely transformed my world.",
       image: "./photos/photo1.jpeg",
       category: "First Met"
     },
     {
       id: 2,
-      date: "Recent Date",
-      title: "Growing Together",
-      location: "In Each Other's Arms",
-      description: "Cherishing every laugh, every shared dream, and the beautiful bond we continue to build.",
+      date: "December 31, 2026",
+      title: "Building Our Promise",
+      location: "Under the Stars",
+      description: "A quiet promise made under the fireworks, solidifying the beautiful bond we share.",
       image: "./photos/photo2.jpeg",
       category: "Milestone"
     },
     {
       id: 3,
-      date: "An Adventure",
-      title: "Creating Memories",
+      date: "Future Dream",
+      title: "Our Shared Adventures",
       location: "Together, Anywhere",
-      description: "Exploring life side by side, finding joy in the simple moments and big adventures alike.",
+      description: "Every new place feels like home as long as I am exploring it with you by my side.",
       image: "./photos/photo3.jpeg",
       category: "Travel"
     },
@@ -93,8 +93,8 @@ export const DEFAULT_COUPLE_DATA = {
       id: 4,
       date: "Everyday",
       title: "Our Daily Joy",
-      location: "Home Sweet Home",
-      description: "Turning every day into something special just by being us.",
+      location: "Our Sanctuary",
+      description: "Finding pure happiness in our shared coffee mornings and quiet evenings at home.",
       image: "./photos/photo4.jpeg",
       category: "Home"
     },
@@ -103,7 +103,7 @@ export const DEFAULT_COUPLE_DATA = {
       date: "Today & Forever",
       title: "Writing Our Next Chapter",
       location: "By Your Side",
-      description: "Hand in hand, stepping into tomorrow with endless passion, patience, and love.",
+      description: "Walking hand in hand toward a future filled with laughter, growth, and endless love.",
       image: "./photos/photo5.jpeg",
       category: "Future"
     }
@@ -113,49 +113,49 @@ export const DEFAULT_COUPLE_DATA = {
   photos: [
     {
       id: 1,
-      title: "Beautiful Moments",
-      date: "Recently",
-      caption: "Capturing the joy of being together.",
+      title: "Just Us",
+      date: "September 2026",
+      caption: "You are the warmth in my every day.",
       url: "./photos/photo6.jpeg",
       tag: "Romantic"
     },
     {
       id: 2,
-      title: "Side by Side",
+      title: "Perfect View",
       date: "Recently",
-      caption: "No matter where we are, it's perfect with you.",
+      caption: "The world looks so much more beautiful when I'm looking at it with you.",
       url: "./photos/photo7.jpeg",
       tag: "Dates"
     },
     {
       id: 3,
-      title: "Pure Joy",
+      title: "Shared Laughter",
       date: "Recently",
-      caption: "Your laughter is my favorite song.",
+      caption: "Your laughter is the soundtrack to my happiest moments.",
       url: "./photos/photo8.jpeg",
       tag: "Joy"
     },
     {
       id: 4,
-      title: "Adventure Awaits",
+      title: "Dreaming Together",
       date: "Recently",
-      caption: "Exploring the world, one smile at a time.",
+      caption: "Building our dream world, one memory at a time.",
       url: "./photos/photo9.jpeg",
       tag: "Travel"
     },
     {
       id: 5,
-      title: "Everyday Magic",
+      title: "Cozy Evenings",
       date: "Everyday",
-      caption: "Making magic out of ordinary moments.",
+      caption: "There is nowhere else I'd rather be than right here, with you.",
       url: "./photos/photo10.jpeg",
       tag: "Everyday"
     },
     {
       id: 6,
-      title: "Special Moments",
+      title: "Treasured Moments",
       date: "Special",
-      caption: "Treasuring these moments with you.",
+      caption: "I cherish every single memory we create together.",
       url: "./photos/photo11.jpeg",
       tag: "Romantic"
     }
@@ -202,7 +202,7 @@ From the moment you entered my life, everything turned a little brighter, warmer
 
 Thank you for being my anchor when storms arise, my favorite conversation at midnight, and my peaceful sanctuary at the end of every day.
 
-I promise to love you fiercely through every season, to celebrate all your victories, and to hold your hand through whatever comes our way.
+I promise to love you fiercely through every season, to celebrate all our victories, and to hold your hand through whatever comes our way.
 
 Yours forever,
 Mouaz`,
@@ -214,6 +214,6 @@ Mouaz`,
     { id: 3, title: "Road trip along the coastal highway with our favorite playlist", completed: true },
     { id: 4, title: "Learn to cook an authentic 3-course Italian meal together", completed: false },
     { id: 5, title: "Adopt a cute puppy and build a garden together", completed: false },
-    { id: 6, title: "Renew our vows under a starry night sky in Paris", completed: false }
+    { id: 6, title: "Renew our commitment to one another under a starry night sky in Paris", completed: false }
   ]
 };

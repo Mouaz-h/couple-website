@@ -88,10 +88,14 @@ export default function App() {
                     {item.image && (
                       <div
                         onClick={() => setLightboxPhoto({ url: item.image, title: item.title, caption: item.description })}
-                        className="rounded-2xl overflow-hidden h-48 cursor-pointer relative group/img"
+                        className="rounded-2xl overflow-hidden cursor-pointer relative group/img bg-dark-900/50"
                       >
-                        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" />
-                        <div className="absolute inset-0 bg-dark-900/20 group-hover/img:bg-transparent transition-colors"></div>
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-auto max-h-[400px] object-contain mx-auto group-hover/img:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-dark-900/10 group-hover/img:bg-transparent transition-colors"></div>
                       </div>
                     )}
                   </div>
@@ -132,13 +136,13 @@ export default function App() {
               <div
                 key={photo.id}
                 onClick={() => setLightboxPhoto(photo)}
-                className="glass-card p-4 rounded-3xl cursor-pointer group hover:-translate-y-2 transition-all duration-300 shadow-2xl"
+                className="glass-card p-4 rounded-3xl cursor-pointer group hover:-translate-y-2 transition-all duration-300 shadow-2xl flex flex-col"
               >
-                <div className="overflow-hidden rounded-2xl h-72 mb-4 relative">
+                <div className="overflow-hidden rounded-2xl mb-4 relative bg-dark-900/50 flex items-center justify-center" style={{ minHeight: '280px' }}>
                   <img
                     src={photo.url}
                     alt={photo.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="max-w-full max-h-[400px] object-contain group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                     <span className="text-xs text-white uppercase tracking-wider font-medium flex items-center gap-1.5">
@@ -146,12 +150,12 @@ export default function App() {
                     </span>
                   </div>
                 </div>
-                <div className="px-2">
+                <div className="px-2 flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-1">
                     <h3 className="font-serif text-lg text-white group-hover:text-romantic-softPink transition-colors">{photo.title}</h3>
                     <span className="text-[10px] text-romantic-pink uppercase tracking-widest">{photo.date}</span>
                   </div>
-                  <p className="text-xs text-roseGold/70 italic font-serif">"{photo.caption}"</p>
+                  <p className="text-xs text-roseGold/70 italic font-serif mt-auto">"{photo.caption}"</p>
                 </div>
               </div>
             ))}
@@ -293,7 +297,7 @@ export default function App() {
             >
               <X className="w-5 h-5" />
             </button>
-            <img src={lightboxPhoto.url} alt="" className="w-full h-[60vh] object-cover rounded-2xl mb-6 shadow-2xl" />
+            <img src={lightboxPhoto.url} alt="" className="w-full max-h-[80vh] object-contain rounded-2xl mb-6 shadow-2xl mx-auto" />
             <h3 className="font-serif text-2xl text-white mb-1">{lightboxPhoto.title}</h3>
             {lightboxPhoto.date && <p className="text-xs text-romantic-pink uppercase tracking-widest mb-2">{lightboxPhoto.date}</p>}
             <p className="text-sm text-roseGold-light/80 italic font-serif">"{lightboxPhoto.caption || lightboxPhoto.description}"</p>
