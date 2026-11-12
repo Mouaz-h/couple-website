@@ -12,7 +12,8 @@
   2. HOW TO CHANGE PHOTOS:
      - The photos are in the 'public/photos/' directory and renamed to photo1.jpeg, photo2.jpeg, etc.
      - Find the 'milestones' and 'photos' arrays below.
-     - Replace the existing 'image' or 'url' fields with '/photos/photo1.jpeg', '/photos/photo2.jpeg', etc.
+     - Replace the existing 'image' or 'url' fields with './photos/photo1.jpeg', './photos/photo2.jpeg', etc.
+     - IMPORTANT: Use './photos/...' (with the dot) to ensure they load correctly on all servers.
 
   3. HOW TO CHANGE MUSIC:
      - Find the 'musicTrack' and 'songPresets' objects below.
@@ -67,7 +68,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Our Special Beginning",
       location: "Where Our Hearts Met",
       description: "The moment everything changed and our paths became forever intertwined in the most beautiful way.",
-      image: "/photos/photo1.jpeg",
+      image: "./photos/photo1.jpeg",
       category: "First Met"
     },
     {
@@ -76,7 +77,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Midnight Promise",
       location: "Under the Stars",
       description: "As the year turned, we whispered our first dreams of a shared lifetime together.",
-      image: "/photos/photo2.jpeg",
+      image: "./photos/photo2.jpeg",
       category: "Milestone"
     },
     {
@@ -85,7 +86,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Our Seaside Escape",
       location: "Amalfi Coast, Italy",
       description: "Sun-kissed sunsets, endless ocean breezes, and walking hand in hand along warm stone alleys.",
-      image: "/photos/photo3.jpeg",
+      image: "./photos/photo3.jpeg",
       category: "Travel"
     },
     {
@@ -94,7 +95,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Building Our Home",
       location: "Our Cozy Sanctuary",
       description: "Creating a warm space filled with laughter, shared coffee mornings, and endless love.",
-      image: "/photos/photo4.jpeg",
+      image: "./photos/photo4.jpeg",
       category: "Home"
     },
     {
@@ -103,7 +104,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Writing Our Next Chapter",
       location: "Everywhere With You",
       description: "Hand in hand, stepping into tomorrow with even deeper passion, patience, and joy.",
-      image: "/photos/photo5.jpeg",
+      image: "./photos/photo5.jpeg",
       category: "Future"
     }
   ],
@@ -115,7 +116,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Golden Hour Embrace",
       date: "September 2026",
       caption: "You are my golden hour in every sunset.",
-      url: "/photos/photo6.jpeg",
+      url: "./photos/photo6.jpeg",
       tag: "Romantic"
     },
     {
@@ -123,7 +124,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Starry Night Stroll",
       date: "Moonlit Evening",
       caption: "Cold hands, warm hearts, infinite stars above.",
-      url: "/photos/photo7.jpeg",
+      url: "./photos/photo7.jpeg",
       tag: "Dates"
     },
     {
@@ -131,7 +132,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Pure Joy",
       date: "Recent",
       caption: "Your smile is my favorite view in the entire world.",
-      url: "/photos/photo8.jpeg",
+      url: "./photos/photo8.jpeg",
       tag: "Joy"
     },
     {
@@ -139,7 +140,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Sunset Serenade",
       date: "Summer",
       caption: "Lost in the rhythm of your laughter.",
-      url: "/photos/photo9.jpeg",
+      url: "./photos/photo9.jpeg",
       tag: "Travel"
     },
     {
@@ -147,7 +148,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Cozy Sunday Morning",
       date: "Everyday",
       caption: "Lazy mornings, warm tea, and endless cuddles.",
-      url: "/photos/photo10.jpeg",
+      url: "./photos/photo10.jpeg",
       tag: "Everyday"
     },
     {
@@ -155,7 +156,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Candlelight Night",
       date: "Special Date",
       caption: "To a million more candlelit memories with you.",
-      url: "/photos/photo11.jpeg",
+      url: "./photos/photo11.jpeg",
       tag: "Romantic"
     }
   ],
