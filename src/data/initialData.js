@@ -10,13 +10,14 @@
      - Update the 'reasonsToLove' array or 'bucketList' items with your personal thoughts.
 
   2. HOW TO CHANGE PHOTOS:
+     - I have copied your photos to the 'public/photos/' directory.
      - Find the 'milestones' and 'photos' arrays below.
-     - Each item has an 'image' or 'url' property containing a web image link.
-     - To use your own photos, you can upload them to free image hosts (like Imgur) or place image files in the 'src/assets/' folder and import them here.
+     - Replace the existing 'image' or 'url' fields with '/photos/YOUR_FILENAME.jpeg'
+     - Make sure the filename matches exactly (including the extension).
 
   3. HOW TO CHANGE MUSIC:
      - Find the 'musicTrack' and 'songPresets' objects below.
-     - Replace the 'url' with a direct link to an MP3 file (e.g., hosted on a music hosting service or direct audio link).
+     - Replace the 'url' with a direct link to an MP3 file or place your MP3 file in 'public/music/' and use '/music/YOUR_FILE.mp3'.
      - Replace 'cover' with an image link for the vinyl record cover art.
   ============================================================================
 */
@@ -67,7 +68,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Our Special Beginning",
       location: "Where Our Hearts Met",
       description: "The moment everything changed and our paths became forever intertwined in the most beautiful way.",
-      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop",
+      image: "/photos/WhatsApp Image 2026-11-12 at 12.40.27.jpeg",
       category: "First Met"
     },
     {
@@ -76,7 +77,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Midnight Promise",
       location: "Under the Stars",
       description: "As the year turned, we whispered our first dreams of a shared lifetime together.",
-      image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop",
+      image: "/photos/WhatsApp Image 2026-11-12 at 12.40.29.jpeg",
       category: "Milestone"
     },
     {
@@ -85,7 +86,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Our Seaside Escape",
       location: "Amalfi Coast, Italy",
       description: "Sun-kissed sunsets, endless ocean breezes, and walking hand in hand along warm stone alleys.",
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
+      image: "/photos/WhatsApp Image 2026-11-12 at 12.40.30.jpeg",
       category: "Travel"
     },
     {
@@ -94,7 +95,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Building Our Home",
       location: "Our Cozy Sanctuary",
       description: "Creating a warm space filled with laughter, shared coffee mornings, and endless love.",
-      image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop",
+      image: "/photos/WhatsApp Image 2026-11-12 at 12.40.31.jpeg",
       category: "Home"
     },
     {
@@ -103,7 +104,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Writing Our Next Chapter",
       location: "Everywhere With You",
       description: "Hand in hand, stepping into tomorrow with even deeper passion, patience, and joy.",
-      image: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=800&auto=format&fit=crop",
+      image: "/photos/WhatsApp Image 2026-11-12 at 12.40.32.jpeg",
       category: "Future"
     }
   ],
@@ -115,7 +116,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Golden Hour Embrace",
       date: "September 2026",
       caption: "You are my golden hour in every sunset.",
-      url: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800&auto=format&fit=crop",
+      url: "/photos/WhatsApp Image 2026-11-12 at 12.40.33.jpeg",
       tag: "Romantic"
     },
     {
@@ -123,7 +124,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Starry Night Stroll",
       date: "Moonlit Evening",
       caption: "Cold hands, warm hearts, infinite stars above.",
-      url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
+      url: "/photos/WhatsApp Image 2026-11-12 at 12.40.34.jpeg",
       tag: "Dates"
     },
     {
@@ -131,7 +132,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Pure Joy",
       date: "Recent",
       caption: "Your smile is my favorite view in the entire world.",
-      url: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop",
+      url: "/photos/WhatsApp Image 2026-11-12 at 12.40.35.jpeg",
       tag: "Joy"
     },
     {
@@ -139,7 +140,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Sunset Serenade",
       date: "Summer",
       caption: "Lost in the rhythm of your laughter.",
-      url: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=800&auto=format&fit=crop",
+      url: "/photos/WhatsApp Image 2026-11-12 at 12.40.36.jpeg",
       tag: "Travel"
     },
     {
@@ -147,7 +148,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Cozy Sunday Morning",
       date: "Everyday",
       caption: "Lazy mornings, warm tea, and endless cuddles.",
-      url: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop",
+      url: "/photos/WhatsApp Image 2026-11-12 at 12.40.27.jpeg",
       tag: "Everyday"
     },
     {
@@ -155,7 +156,7 @@ export const DEFAULT_COUPLE_DATA = {
       title: "Candlelight Night",
       date: "Special Date",
       caption: "To a million more candlelit memories with you.",
-      url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop",
+      url: "/photos/WhatsApp Image 2026-11-12 at 12.40.29 (1).jpeg",
       tag: "Romantic"
     }
   ],
