@@ -5,7 +5,7 @@ import MusicPlayer from './components/MusicPlayer';
 import { DEFAULT_COUPLE_DATA } from './data/initialData';
 import { Heart, Calendar, MapPin, Sparkles, Image as ImageIcon, BookOpen, CheckSquare, Plus, X, Check, Trash2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { database, ref, onValue, push, remove, update } from './firebase';
+import { db } from './sync';
 
 export default function App() {
   const [coupleData] = useState(DEFAULT_COUPLE_DATA);
@@ -15,26 +15,33 @@ export default function App() {
   const [newBucketItem, setNewBucketItem] = useState('');
   const [activeTab, setActiveTab] = useState('All');
 
-  // Real-time Firebase Sync for Bucket List
+  // Real-time Gun.js Sync for Bucket List
   useEffect(() => {
-    const bucketRef = ref(database, 'bucketList');
-    const unsubscribe = onValue(bucketRef, (snapshot) => {
-      const data = snapshot.val();
+    const bucket = db.get('bucketList');
+
+    bucket.map().on((data, id) => {
       if (data) {
-        // Convert Firebase object to array
-        const list = Object.entries(data).map(([id, value]) => ({
-          firebaseId: id,
-          ...value
-        }));
-        setBucketList(list);
+        setBucketList(prev => {
+          const exists = prev.find(item => item.id === id);
+          if (exists) {
+            return prev.map(item => item.id === id ? { ...data, id } : item);
+          }
+          return [...prev, { ...data, id }];
+        });
       } else {
-        // Initialize with default data if DB is empty
+        // Handle deletion
+        setBucketList(prev => prev.filter(item => item.id !== id));
+      }
+    });
+
+    // Initial load check - if empty, put default data
+    bucket.once((data) => {
+      if (!data) {
         DEFAULT_COUPLE_DATA.bucketList.forEach(item => {
-          push(bucketRef, { title: item.title, completed: item.completed });
+          bucket.set({ title: item.title, completed: item.completed });
         });
       }
     });
-    return () => unsubscribe();
   }, []);
 
   const triggerHeartConfetti = () => {
@@ -46,23 +53,20 @@ export default function App() {
     });
   };
 
-  const toggleBucketItem = (firebaseId, currentStatus) => {
-    const itemRef = ref(database, `bucketList/${firebaseId}`);
-    update(itemRef, { completed: !currentStatus });
+  const toggleBucketItem = (id, currentStatus) => {
+    db.get('bucketList').get(id).put({ completed: !currentStatus });
     if (!currentStatus) triggerHeartConfetti();
   };
 
-  const deleteBucketItem = (e, firebaseId) => {
+  const deleteBucketItem = (e, id) => {
     e.stopPropagation();
-    const itemRef = ref(database, `bucketList/${firebaseId}`);
-    remove(itemRef);
+    db.get('bucketList').get(id).put(null);
   };
 
   const addBucketItem = (e) => {
     e.preventDefault();
     if (!newBucketItem.trim()) return;
-    const bucketRef = ref(database, 'bucketList');
-    push(bucketRef, {
+    db.get('bucketList').set({
       title: newBucketItem.trim(),
       completed: false,
       createdAt: Date.now()
@@ -271,8 +275,8 @@ export default function App() {
             <div className="space-y-3">
               {bucketList.map((item) => (
                 <div
-                  key={item.firebaseId}
-                  onClick={() => toggleBucketItem(item.firebaseId, item.completed)}
+                  key={item.id}
+                  onClick={() => toggleBucketItem(item.id, item.completed)}
                   className={`flex items-center justify-between p-4 rounded-2xl cursor-pointer transition-all group ${
                     item.completed
                       ? 'bg-romantic-pink/10 border border-romantic-pink/30 text-roseGold/60 line-through'
@@ -292,7 +296,7 @@ export default function App() {
                       {item.completed ? 'Completed' : 'Dreaming'}
                     </span>
                     <button
-                      onClick={(e) => deleteBucketItem(e, item.firebaseId)}
+                      onClick={(e) => deleteBucketItem(e, item.id)}
                       className="p-1 text-roseGold/40 hover:text-romantic-pink transition-colors rounded-lg hover:bg-white/5"
                       title="Delete item"
                     >
