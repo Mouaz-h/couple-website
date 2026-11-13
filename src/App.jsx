@@ -129,6 +129,7 @@ export default function App() {
                         <img
                           src={item.image}
                           alt={item.title}
+                          loading="lazy"
                           className="w-full h-auto max-h-[400px] object-contain mx-auto group-hover/img:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-dark-900/10 group-hover/img:bg-transparent transition-colors"></div>
@@ -175,6 +176,7 @@ export default function App() {
                   <img
                     src={photo.url}
                     alt={photo.title}
+                    loading="lazy"
                     className="max-w-full max-h-[400px] object-contain group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
