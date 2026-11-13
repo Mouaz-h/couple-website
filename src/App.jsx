@@ -1,18 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import MusicPlayer from './components/MusicPlayer';
 import { DEFAULT_COUPLE_DATA } from './data/initialData';
 import { Heart, Calendar, MapPin, Sparkles, Image as ImageIcon, BookOpen, CheckSquare, Plus, X, Check, Trash2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { database, ref, onValue, push, remove, update } from './firebase';
 
 export default function App() {
   const [coupleData] = useState(DEFAULT_COUPLE_DATA);
   const [currentTrack, setCurrentTrack] = useState(DEFAULT_COUPLE_DATA.musicTrack);
   const [lightboxPhoto, setLightboxPhoto] = useState(null);
-  const [bucketList, setBucketList] = useState(DEFAULT_COUPLE_DATA.bucketList);
+  const [bucketList, setBucketList] = useState([]);
   const [newBucketItem, setNewBucketItem] = useState('');
   const [activeTab, setActiveTab] = useState('All');
+
+  // Real-time Firebase Sync for Bucket List
+  useEffect(() => {
+    const bucketRef = ref(database, 'bucketList');
+    const unsubscribe = onValue(bucketRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        // Convert Firebase object to array
+        const list = Object.entries(data).map(([id, value]) => ({
+          firebaseId: id,
+          ...value
+        }));
+        setBucketList(list);
+      } else {
+        // Initialize with default data if DB is empty
+        DEFAULT_COUPLE_DATA.bucketList.forEach(item => {
+          push(bucketRef, { title: item.title, completed: item.completed });
+        });
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   const triggerHeartConfetti = () => {
     confetti({
@@ -23,20 +46,27 @@ export default function App() {
     });
   };
 
-  const toggleBucketItem = (id) => {
-    setBucketList(bucketList.map(item => item.id === id ? { ...item, completed: !item.completed } : item));
-    triggerHeartConfetti();
+  const toggleBucketItem = (firebaseId, currentStatus) => {
+    const itemRef = ref(database, `bucketList/${firebaseId}`);
+    update(itemRef, { completed: !currentStatus });
+    if (!currentStatus) triggerHeartConfetti();
   };
 
-  const deleteBucketItem = (e, id) => {
+  const deleteBucketItem = (e, firebaseId) => {
     e.stopPropagation();
-    setBucketList(bucketList.filter(item => item.id !== id));
+    const itemRef = ref(database, `bucketList/${firebaseId}`);
+    remove(itemRef);
   };
 
   const addBucketItem = (e) => {
     e.preventDefault();
     if (!newBucketItem.trim()) return;
-    setBucketList([...bucketList, { id: Date.now(), title: newBucketItem.trim(), completed: false }]);
+    const bucketRef = ref(database, 'bucketList');
+    push(bucketRef, {
+      title: newBucketItem.trim(),
+      completed: false,
+      createdAt: Date.now()
+    });
     setNewBucketItem('');
   };
 
@@ -53,10 +83,8 @@ export default function App() {
       />
 
       <main className="overflow-hidden">
-        {/* Hero Section */}
         <Hero data={coupleData} />
 
-        {/* SECTION 1: Our Story / Timeline */}
         <section id="story" className="py-28 px-6 max-w-5xl mx-auto relative">
           <div className="text-center mb-16">
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-romantic-pink">Milestones of Us</span>
@@ -67,7 +95,6 @@ export default function App() {
           <div className="relative border-l border-romantic-pink/30 ml-4 sm:ml-1/2 space-y-12">
             {coupleData.milestones.map((item, index) => (
               <div key={item.id} className={`relative flex flex-col sm:flex-row items-start ${index % 2 === 0 ? 'sm:flex-row-reverse' : ''} group`}>
-                {/* Timeline dot */}
                 <div className="absolute -left-[5px] sm:-left-[7px] top-6 w-3.5 h-3.5 rounded-full bg-romantic-pink border-4 border-dark-950 shadow-lg shadow-romantic-pink group-hover:scale-125 transition-transform"></div>
 
                 <div className={`sm:w-1/2 ${index % 2 === 0 ? 'sm:pl-12' : 'sm:pr-12'} pl-8 sm:pl-0 w-full`}>
@@ -110,7 +137,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* SECTION 2: Photo Gallery */}
         <section id="memories" className="py-28 px-6 max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-romantic-pink">Captured Moments</span>
@@ -118,7 +144,6 @@ export default function App() {
             <div className="w-16 h-0.5 bg-romantic-pink mx-auto mt-4"></div>
           </div>
 
-          {/* Filter Categories */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             {categories.map((cat) => (
               <button
@@ -135,7 +160,6 @@ export default function App() {
             ))}
           </div>
 
-          {/* Photo Grid (Polaroid Style) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPhotos.map((photo) => (
               <div
@@ -167,7 +191,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* SECTION 3: Love Notes & Letters */}
         <section id="letters" className="py-28 px-6 max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-romantic-pink">Words From The Heart</span>
@@ -175,7 +198,6 @@ export default function App() {
             <div className="w-16 h-0.5 bg-romantic-pink mx-auto mt-4"></div>
           </div>
 
-          {/* Romantic Letter Envelope Container */}
           <div className="glass-card p-8 sm:p-12 rounded-3xl shadow-2xl border border-romantic-pink/30 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-48 h-48 bg-romantic-pink/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -202,7 +224,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* Reasons Why I Love You Grid */}
           <div className="mt-20">
             <div className="text-center mb-12">
               <h3 className="text-3xl font-serif text-white">Reasons Why I Love You</h3>
@@ -223,7 +244,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* SECTION 4: Bucket List */}
         <section id="bucketlist" className="py-28 px-6 max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-romantic-pink">Future Dreams</span>
@@ -251,8 +271,8 @@ export default function App() {
             <div className="space-y-3">
               {bucketList.map((item) => (
                 <div
-                  key={item.id}
-                  onClick={() => toggleBucketItem(item.id)}
+                  key={item.firebaseId}
+                  onClick={() => toggleBucketItem(item.firebaseId, item.completed)}
                   className={`flex items-center justify-between p-4 rounded-2xl cursor-pointer transition-all group ${
                     item.completed
                       ? 'bg-romantic-pink/10 border border-romantic-pink/30 text-roseGold/60 line-through'
@@ -272,7 +292,7 @@ export default function App() {
                       {item.completed ? 'Completed' : 'Dreaming'}
                     </span>
                     <button
-                      onClick={(e) => deleteBucketItem(e, item.id)}
+                      onClick={(e) => deleteBucketItem(e, item.firebaseId)}
                       className="p-1 text-roseGold/40 hover:text-romantic-pink transition-colors rounded-lg hover:bg-white/5"
                       title="Delete item"
                     >
@@ -286,7 +306,6 @@ export default function App() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="py-16 text-center border-t border-white/10 bg-dark-950">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Heart className="w-4 h-4 text-romantic-pink fill-romantic-pink" />
@@ -298,7 +317,6 @@ export default function App() {
         </p>
       </footer>
 
-      {/* Lightbox Modal */}
       {lightboxPhoto && (
         <div
           onClick={() => setLightboxPhoto(null)}
@@ -319,7 +337,6 @@ export default function App() {
         </div>
       )}
 
-      {/* Music Player */}
       <MusicPlayer
         currentTrack={currentTrack}
         songPresets={coupleData.songPresets}
