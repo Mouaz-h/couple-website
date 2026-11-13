@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import MusicPlayer from './components/MusicPlayer';
 import { DEFAULT_COUPLE_DATA } from './data/initialData';
-import { Heart, Calendar, MapPin, Sparkles, Image as ImageIcon, BookOpen, CheckSquare, Plus, X, Check } from 'lucide-react';
+import { Heart, Calendar, MapPin, Sparkles, Image as ImageIcon, BookOpen, CheckSquare, Plus, X, Check, Trash2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function App() {
@@ -26,6 +26,11 @@ export default function App() {
   const toggleBucketItem = (id) => {
     setBucketList(bucketList.map(item => item.id === id ? { ...item, completed: !item.completed } : item));
     triggerHeartConfetti();
+  };
+
+  const deleteBucketItem = (e, id) => {
+    e.stopPropagation();
+    setBucketList(bucketList.filter(item => item.id !== id));
   };
 
   const addBucketItem = (e) => {
@@ -248,7 +253,7 @@ export default function App() {
                 <div
                   key={item.id}
                   onClick={() => toggleBucketItem(item.id)}
-                  className={`flex items-center justify-between p-4 rounded-2xl cursor-pointer transition-all ${
+                  className={`flex items-center justify-between p-4 rounded-2xl cursor-pointer transition-all group ${
                     item.completed
                       ? 'bg-romantic-pink/10 border border-romantic-pink/30 text-roseGold/60 line-through'
                       : 'glass hover:border-romantic-pink/40 text-white'
@@ -262,9 +267,18 @@ export default function App() {
                     </div>
                     <span className="text-sm font-medium">{item.title}</span>
                   </div>
-                  <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 text-roseGold/60">
-                    {item.completed ? 'Completed' : 'Dreaming'}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 text-roseGold/60">
+                      {item.completed ? 'Completed' : 'Dreaming'}
+                    </span>
+                    <button
+                      onClick={(e) => deleteBucketItem(e, item.id)}
+                      className="p-1 text-roseGold/40 hover:text-romantic-pink transition-colors rounded-lg hover:bg-white/5"
+                      title="Delete item"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
